@@ -8,10 +8,12 @@ public class ClientConfig {
     public static final ForgeConfigSpec.BooleanValue vanillaBow;
     public static final ForgeConfigSpec.BooleanValue cgm;
     public static final ForgeConfigSpec.BooleanValue tac;
+    public static final ForgeConfigSpec.BooleanValue alwaysReturnTo1stPerson;
 
     static {
         final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-        builder.comment("Consistent Aim: Config").push("vanilla");
+        builder.comment("Consistent Aim: Config").push("support");
+        builder.push("vanilla");
         vanillaSpyglass = builder
                 .comment("Enable Consistent Aim for vanilla spyglass")
                 .define("vanillaSpyglass", true);
@@ -26,6 +28,10 @@ public class ClientConfig {
         tac = builder
                 .comment("Enable Consistent Aim for Timeless & Classics")
                 .define("tac", true);
+        builder.pop();
+        builder.pop();
+        builder.push("mechanism");
+        alwaysReturnTo1stPerson = builder.define("alwaysReturnTo1stPerson", true);
         builder.pop();
         CFG = builder.build();
     }
