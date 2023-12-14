@@ -1,13 +1,12 @@
 package committee.nova.consistentaim.util;
 
 import committee.nova.consistentaim.api.IOptions;
+import committee.nova.consistentaim.config.ClientConfig;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +25,7 @@ public class Utilities {
     }
 
     public static void onStopAiming() {
+        if (ClientConfig.alwaysReturnTo1stPerson.get()) return;
         final Options options = Minecraft.getInstance().options;
         options.setCameraType(((IOptions) options).consistentaim$getCameraTypeZoomed());
     }
@@ -34,11 +34,11 @@ public class Utilities {
         if (langCache.containsKey(cameraType)) return langCache.get(cameraType);
         final String translatedKey = "cameratype.consistentaim." + cameraType.name().toLowerCase();
         if (Language.getInstance().has(translatedKey)) {
-            final Component translated = new TranslatableComponent(translatedKey);
+            final Component translated = Component.translatable(translatedKey);
             langCache.put(cameraType, translated);
             return translated;
         }
-        final Component literal = new TextComponent(toCamelCase(cameraType.name()));
+        final Component literal = Component.literal(toCamelCase(cameraType.name()));
         langCache.put(cameraType, literal);
         return literal;
     }

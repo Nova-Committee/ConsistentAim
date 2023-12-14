@@ -5,7 +5,7 @@ import committee.nova.consistentaim.util.Utilities;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -32,7 +32,7 @@ public abstract class MixinOptions implements IOptions {
         final Player player = Minecraft.getInstance().player;
         if (player == null) return;
         player.displayClientMessage(
-                new TranslatableComponent(
+                Component.translatable(
                         "msg.consistentaim.cameratype",
                         Utilities.getCameraTypeName(consistentaim$cameraTypeZoomed)
                 ),

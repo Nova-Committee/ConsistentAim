@@ -9,7 +9,9 @@
     "MixinMinecraft",
     "MixinOptions",
     "MixinSpyglassItem",
-    "cgm.MixinAimingHandler",
+    "cgm.MixinAimingHandler"
+  ],
+  "removed": [
     "tac.MixinAimingHandler"
   ],
   "injectors": {
