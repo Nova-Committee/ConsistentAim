@@ -12,19 +12,23 @@ public class AimingProxyManager {
     public static void init() {
         validateAimingProxy("cgm", CGMAimingProxy::new);
         validateAimingProxy("tac", TACAimingProxy::new);
-        aimingProxies.add(IAimingProxy.VANILLA);
+        addAimingProxy(IAimingProxy.VANILLA);
     }
 
     private static final Set<IAimingProxy> aimingProxies = Sets.newHashSet();
 
-    private static void validateAimingProxy(String id, SupplierEx<IAimingProxy> proxySupplier) {
+    public static void validateAimingProxy(String id, SupplierEx<IAimingProxy> proxySupplier) {
         if (!ModList.get().isLoaded(id)) return;
         try {
             final IAimingProxy proxy = proxySupplier.get();
-            aimingProxies.add(proxy);
+            addAimingProxy(proxy);
         } catch (Exception e) {
             ConsistentAim.LOGGER.warn("Failed to validate aiming proxy for {}", id);
         }
+    }
+
+    public static void addAimingProxy(IAimingProxy proxy) {
+        aimingProxies.add(proxy);
     }
 
     public static boolean testAiming() {
@@ -33,7 +37,7 @@ public class AimingProxyManager {
     }
 
     @FunctionalInterface
-    interface SupplierEx<T> {
+    public interface SupplierEx<T> {
         T get() throws Exception;
     }
 }
