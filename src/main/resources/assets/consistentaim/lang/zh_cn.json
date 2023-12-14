@@ -1,0 +1,6 @@
+{
+  "msg.consistentaim.cameratype": "视角：%s",
+  "cameratype.consistentaim.first_person": "第一人称",
+  "cameratype.consistentaim.third_person_back": "第三人称（背面）",
+  "cameratype.consistentaim.third_person_front": "第三人称（正面）"
+}

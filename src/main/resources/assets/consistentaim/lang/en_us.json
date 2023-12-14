@@ -1,0 +1,6 @@
+{
+  "msg.consistentaim.cameratype": "Camera Type: %s",
+  "cameratype.consistentaim.first_person": "First Person",
+  "cameratype.consistentaim.third_person_back": "Third Person (Back)",
+  "cameratype.consistentaim.third_person_front": "Third Person (Front)"
+}
