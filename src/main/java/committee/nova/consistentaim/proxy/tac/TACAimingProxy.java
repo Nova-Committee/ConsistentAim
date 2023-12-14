@@ -2,6 +2,7 @@ package committee.nova.consistentaim.proxy.tac;
 
 import com.tac.guns.client.handler.AimingHandler;
 import committee.nova.consistentaim.api.IAimingHandler;
+import committee.nova.consistentaim.config.ClientConfig;
 import committee.nova.consistentaim.proxy.IAimingProxy;
 
 public class TACAimingProxy implements IAimingProxy {
@@ -11,6 +12,6 @@ public class TACAimingProxy implements IAimingProxy {
 
     @Override
     public boolean isAiming() {
-        return ((IAimingHandler) AimingHandler.get()).consistentaim$isAiming();
+        return ClientConfig.tac.get() && ((IAimingHandler) AimingHandler.get()).consistentaim$isAiming();
     }
 }

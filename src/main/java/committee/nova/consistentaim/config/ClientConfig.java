@@ -21,7 +21,7 @@ public class ClientConfig {
                 .define("cgm", true);
         tac = builder
                 .comment("Enable Consistent Aim for Timeless & Classics")
-                .define("tac", true);
+                .define("tac", false);
         builder.pop();
         CFG = builder.build();
     }
