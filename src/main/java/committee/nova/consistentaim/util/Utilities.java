@@ -15,6 +15,10 @@ import java.util.Map;
 public class Utilities {
     private static final Map<CameraType, Component> langCache = new HashMap<>();
 
+    public static boolean is1stPerson() {
+        return Minecraft.getInstance().options.getCameraType().isFirstPerson();
+    }
+
     public static void onStartAiming() {
         final Options options = Minecraft.getInstance().options;
         ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());

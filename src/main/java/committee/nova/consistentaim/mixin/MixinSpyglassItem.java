@@ -2,7 +2,6 @@ package committee.nova.consistentaim.mixin;
 
 import committee.nova.consistentaim.config.ClientConfig;
 import committee.nova.consistentaim.util.Utilities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinSpyglassItem {
     @Inject(method = "use", at = @At("HEAD"))
     private void inject$use(Level l, Player p, InteractionHand h, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
-        if (ClientConfig.vanillaSpyglass.get() && !Minecraft.getInstance().options.getCameraType().isFirstPerson())
+        if (ClientConfig.vanillaSpyglass.get() && !Utilities.is1stPerson())
             Utilities.onStartAiming();
     }
 
