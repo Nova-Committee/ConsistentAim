@@ -8,7 +8,6 @@
     "MixinBowItem",
     "MixinMinecraft",
     "MixinOptions",
-    "MixinSpyglassItem",
     "cgm.MixinAimingHandler",
     "tac.MixinAimingHandler"
   ],

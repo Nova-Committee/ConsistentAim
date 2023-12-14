@@ -1,11 +1,11 @@
 package committee.nova.consistentaim.api;
 
-import net.minecraft.client.CameraType;
+import net.minecraft.client.settings.PointOfView;
 
 public interface IOptions {
-    CameraType consistentaim$getCameraTypeZoomed();
+    PointOfView consistentaim$getCameraTypeZoomed();
 
-    void consistentaim$setCameraTypeZoomed(CameraType cameraType);
+    void consistentaim$setCameraTypeZoomed(PointOfView cameraType);
 
     void consistentaim$cycleCameraTypeZoomed();
 }

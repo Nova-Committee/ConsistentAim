@@ -1,44 +1,44 @@
 package committee.nova.consistentaim.util;
 
 import committee.nova.consistentaim.api.IOptions;
-import net.minecraft.client.CameraType;
+import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.client.settings.PointOfView;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.LanguageMap;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Utilities {
-    private static final Map<CameraType, Component> langCache = new HashMap<>();
+    private static final Map<PointOfView, ITextComponent> langCache = new HashMap<>();
 
     public static boolean is1stPerson() {
         return Minecraft.getInstance().options.getCameraType().isFirstPerson();
     }
 
     public static void onStartAiming() {
-        final Options options = Minecraft.getInstance().options;
+        final GameSettings options = Minecraft.getInstance().options;
         ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
-        options.setCameraType(CameraType.FIRST_PERSON);
+        options.setCameraType(PointOfView.FIRST_PERSON);
     }
 
     public static void onStopAiming() {
-        final Options options = Minecraft.getInstance().options;
+        final GameSettings options = Minecraft.getInstance().options;
         options.setCameraType(((IOptions) options).consistentaim$getCameraTypeZoomed());
     }
 
-    public static Component getCameraTypeName(CameraType cameraType) {
+    public static ITextComponent getCameraTypeName(PointOfView cameraType) {
         if (langCache.containsKey(cameraType)) return langCache.get(cameraType);
         final String translatedKey = "cameratype.consistentaim." + cameraType.name().toLowerCase();
-        if (Language.getInstance().has(translatedKey)) {
-            final Component translated = new TranslatableComponent(translatedKey);
+        if (LanguageMap.getInstance().has(translatedKey)) {
+            final ITextComponent translated = new TranslationTextComponent(translatedKey);
             langCache.put(cameraType, translated);
             return translated;
         }
-        final Component literal = new TextComponent(toCamelCase(cameraType.name()));
+        final ITextComponent literal = new StringTextComponent(toCamelCase(cameraType.name()));
         langCache.put(cameraType, literal);
         return literal;
     }

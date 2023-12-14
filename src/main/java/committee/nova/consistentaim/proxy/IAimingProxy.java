@@ -2,15 +2,14 @@ package committee.nova.consistentaim.proxy;
 
 import committee.nova.consistentaim.config.ClientConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.item.Items;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.item.Items;
 
 public interface IAimingProxy {
     IAimingProxy VANILLA = () -> {
-        final LocalPlayer player = Minecraft.getInstance().player;
+        final ClientPlayerEntity player = Minecraft.getInstance().player;
         if (player == null) return false;
-        if (ClientConfig.vanillaSpyglass.get() && player.isScoping()) return true;
-        return ClientConfig.vanillaBow.get() && player.isUsingItem() && player.getUseItem().is(Items.BOW);
+        return ClientConfig.vanillaBow.get() && player.isUsingItem() && player.getUseItem().getItem().equals(Items.BOW);
     };
 
     boolean isAiming();

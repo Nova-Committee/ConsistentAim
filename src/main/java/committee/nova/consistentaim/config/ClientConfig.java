@@ -4,7 +4,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class ClientConfig {
     public static final ForgeConfigSpec CFG;
-    public static final ForgeConfigSpec.BooleanValue vanillaSpyglass;
     public static final ForgeConfigSpec.BooleanValue vanillaBow;
     public static final ForgeConfigSpec.BooleanValue cgm;
     public static final ForgeConfigSpec.BooleanValue tac;
@@ -12,9 +11,6 @@ public class ClientConfig {
     static {
         final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Consistent Aim: Config").push("vanilla");
-        vanillaSpyglass = builder
-                .comment("Enable Consistent Aim for vanilla spyglass")
-                .define("vanillaSpyglass", true);
         vanillaBow = builder
                 .comment("Enable Consistent Aim for vanilla bow")
                 .define("vanillaBow", false);
