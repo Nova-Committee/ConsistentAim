@@ -1,6 +1,7 @@
 package committee.nova.consistentaim.util;
 
 import committee.nova.consistentaim.api.IOptions;
+import committee.nova.consistentaim.config.ClientConfig;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.PointOfView;
@@ -21,11 +22,13 @@ public class Utilities {
 
     public static void onStartAiming() {
         final GameSettings options = Minecraft.getInstance().options;
-        ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
+        if (!ClientConfig.alwaysReturnTo1stPerson.get())
+            ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
         options.setCameraType(PointOfView.FIRST_PERSON);
     }
 
     public static void onStopAiming() {
+        if (ClientConfig.alwaysReturnTo1stPerson.get()) return;
         final GameSettings options = Minecraft.getInstance().options;
         options.setCameraType(((IOptions) options).consistentaim$getCameraTypeZoomed());
     }
