@@ -6,12 +6,11 @@
   "refmap": "consistentaim.refmap.json",
   "client": [
     "MixinMinecraft",
-    "MixinOptions"
+    "MixinOptions",
+    "cgm.MixinAimingHandler",
+    "tac.MixinAimingHandler"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "mixins": [
-    "MixinAimingHandler"
-  ]
+  }
 }

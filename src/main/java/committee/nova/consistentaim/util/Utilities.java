@@ -1,6 +1,5 @@
 package committee.nova.consistentaim.util;
 
-import com.mrcrayfish.guns.client.handler.AimingHandler;
 import committee.nova.consistentaim.api.IOptions;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
@@ -16,17 +15,13 @@ import java.util.Map;
 public class Utilities {
     private static final Map<CameraType, Component> langCache = new HashMap<>();
 
-    public static boolean isAiming() {
-        return AimingHandler.get().isZooming();
-    }
-
     public static void onStartAiming() {
         final Options options = Minecraft.getInstance().options;
         ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
         options.setCameraType(CameraType.FIRST_PERSON);
     }
 
-    public static void onFinishAiming() {
+    public static void onStopAiming() {
         final Options options = Minecraft.getInstance().options;
         options.setCameraType(((IOptions) options).consistentaim$getCameraTypeZoomed());
     }

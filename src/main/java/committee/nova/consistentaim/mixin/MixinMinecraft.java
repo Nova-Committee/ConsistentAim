@@ -1,7 +1,7 @@
 package committee.nova.consistentaim.mixin;
 
 import committee.nova.consistentaim.api.IOptions;
-import committee.nova.consistentaim.util.Utilities;
+import committee.nova.consistentaim.proxy.AimingProxyManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import org.spongepowered.asm.mixin.Final;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
-public class MixinMinecraft {
+public abstract class MixinMinecraft {
     @Shadow
     @Final
     public Options options;
@@ -26,7 +26,7 @@ public class MixinMinecraft {
             cancellable = true
     )
     private void inject$handleKeyBinds(CallbackInfo ci) {
-        if (!Utilities.isAiming()) return;
+        if (!AimingProxyManager.testAiming()) return;
         ci.cancel();
         ((IOptions) options).consistentaim$cycleCameraTypeZoomed();
     }
