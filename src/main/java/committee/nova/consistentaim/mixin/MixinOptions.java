@@ -28,7 +28,7 @@ public abstract class MixinOptions implements IOptions {
 
     @Override
     public void consistentaim$cycleCameraTypeZoomed() {
-        consistentaim$cameraTypeZoomed = consistentaim$cameraTypeZoomed.cycle();
+        consistentaim$setCameraTypeZoomed(consistentaim$cameraTypeZoomed.cycle());
         final Player player = Minecraft.getInstance().player;
         if (player == null) return;
         player.displayClientMessage(

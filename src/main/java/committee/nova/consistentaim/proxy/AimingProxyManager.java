@@ -12,9 +12,10 @@ public class AimingProxyManager {
     public static void init() {
         validateAimingProxy("cgm", CGMAimingProxy::new);
         validateAimingProxy("tac", TACAimingProxy::new);
+        aimingProxies.add(IAimingProxy.VANILLA);
     }
 
-    private static final Set<IAimingProxy> aimingProxies = Sets.newHashSet(IAimingProxy.DUMMY);
+    private static final Set<IAimingProxy> aimingProxies = Sets.newHashSet();
 
     private static void validateAimingProxy(String id, SupplierEx<IAimingProxy> proxySupplier) {
         if (!ModList.get().isLoaded(id)) return;

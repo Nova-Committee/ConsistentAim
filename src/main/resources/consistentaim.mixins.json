@@ -5,8 +5,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "consistentaim.refmap.json",
   "client": [
+    "MixinBowItem",
     "MixinMinecraft",
     "MixinOptions",
+    "MixinSpyglassItem",
     "cgm.MixinAimingHandler",
     "tac.MixinAimingHandler"
   ],
