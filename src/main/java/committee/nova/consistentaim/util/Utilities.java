@@ -20,7 +20,8 @@ public class Utilities {
 
     public static void onStartAiming() {
         final Options options = Minecraft.getInstance().options;
-        ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
+        if (!ClientConfig.alwaysReturnTo1stPerson.get())
+            ((IOptions) options).consistentaim$setCameraTypeZoomed(options.getCameraType());
         options.setCameraType(CameraType.FIRST_PERSON);
     }
 

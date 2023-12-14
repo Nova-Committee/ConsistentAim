@@ -1,6 +1,7 @@
 package committee.nova.consistentaim.mixin;
 
 import committee.nova.consistentaim.api.IOptions;
+import committee.nova.consistentaim.config.ClientConfig;
 import committee.nova.consistentaim.proxy.AimingProxyManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
@@ -28,6 +29,7 @@ public abstract class MixinMinecraft {
     private void inject$handleKeyBinds(CallbackInfo ci) {
         if (!AimingProxyManager.testAiming()) return;
         ci.cancel();
+        if (ClientConfig.alwaysReturnTo1stPerson.get()) return;
         ((IOptions) options).consistentaim$cycleCameraTypeZoomed();
     }
 }
