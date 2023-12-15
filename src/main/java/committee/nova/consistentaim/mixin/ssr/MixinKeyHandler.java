@@ -18,7 +18,7 @@ public abstract class MixinKeyHandler {
             ),
             remap = false
     )
-    private static boolean inject$onInput(KeyMapping instance) {
+    private static boolean redirect$onInput(KeyMapping instance) {
         if (!instance.equals(Minecraft.getInstance().options.keyTogglePerspective)) return instance.consumeClick();
         return !AimingProxyManager.testAiming() && instance.consumeClick();
     }
