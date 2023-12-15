@@ -150,6 +150,7 @@ dependencies {
     implementation fg.deobf("curse.maven:obfuscate-289380:${obfuscate_file_id}")
     implementation fg.deobf("curse.maven:mrcrayfishs-gun-mod-289479:${cgm_file_id}")
     implementation fg.deobf("curse.maven:timeless-and-classic-guns-tac-491264:${tac_file_id}")
+    implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:${ssr_file_id}")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

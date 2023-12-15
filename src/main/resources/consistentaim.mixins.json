@@ -9,6 +9,7 @@
     "MixinMinecraft",
     "MixinOptions",
     "cgm.MixinAimingHandler",
+    "ssr.MixinKeyHandler",
     "tac.MixinAimingHandler"
   ],
   "injectors": {
