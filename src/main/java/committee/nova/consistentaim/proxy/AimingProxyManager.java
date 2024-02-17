@@ -3,7 +3,6 @@ package committee.nova.consistentaim.proxy;
 import com.google.common.collect.Sets;
 import committee.nova.consistentaim.ConsistentAim;
 import committee.nova.consistentaim.proxy.cgm.CGMAimingProxy;
-import committee.nova.consistentaim.proxy.tac.TACAimingProxy;
 import net.minecraftforge.fml.ModList;
 
 import java.util.Set;
@@ -11,7 +10,7 @@ import java.util.Set;
 public class AimingProxyManager {
     public static void init() {
         validateAimingProxy("cgm", CGMAimingProxy::new);
-        validateAimingProxy("tac", TACAimingProxy::new);
+        //validateAimingProxy("tac", TACAimingProxy::new);
         addAimingProxy(IAimingProxy.VANILLA);
     }
 

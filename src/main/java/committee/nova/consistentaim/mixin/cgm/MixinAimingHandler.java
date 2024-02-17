@@ -14,7 +14,7 @@ public abstract class MixinAimingHandler {
             method = "onClientTick(Lnet/minecraftforge/event/TickEvent$ClientTickEvent;)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V",
+                    target = "Lcom/mrcrayfish/framework/api/network/FrameworkNetwork;sendToServer(Lcom/mrcrayfish/framework/network/message/IMessage;)V",
                     ordinal = 0
             ),
             remap = false
@@ -27,7 +27,7 @@ public abstract class MixinAimingHandler {
             method = "onClientTick(Lnet/minecraftforge/event/TickEvent$ClientTickEvent;)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraftforge/network/simple/SimpleChannel;sendToServer(Ljava/lang/Object;)V",
+                    target = "Lcom/mrcrayfish/framework/api/network/FrameworkNetwork;sendToServer(Lcom/mrcrayfish/framework/network/message/IMessage;)V",
                     ordinal = 1
             ),
             remap = false

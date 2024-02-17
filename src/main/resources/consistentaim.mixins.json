@@ -10,8 +10,7 @@
     "MixinOptions",
     "MixinSpyglassItem",
     "cgm.MixinAimingHandler",
-    "ssr.MixinKeyHandler",
-    "tac.MixinAimingHandler"
+    "ssr.MixinKeyHandler"
   ],
   "injectors": {
     "defaultRequire": 1
